@@ -35,7 +35,9 @@ const createMovie = (req, res, next) => {
       if (!movie) {
         throw new NotCorrectDataError('Переданы некорректные данные');
       }
-      res.send(movie);
+      const newMovie = movie.toObject();
+      delete newMovie.owner;
+      res.send(newMovie);
     })
     .catch(next);
 };
