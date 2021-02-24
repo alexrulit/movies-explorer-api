@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const movieSchema = new mongoose.Schema({
+  movieId: {
+    type: Number,
+    required: true,
+  },
   country: {
     type: String,
     required: true,
@@ -26,7 +30,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        const urlRegexp = /^(http|https)\:\/\/(www.)?[a-zA-Z0-9\-\.\/\?\=\&]+/;
+        const urlRegexp = /^(http|https):\/\/(www.)?[a-zA-Z0-9-./?=&]+/;
         return urlRegexp.test(v);
       },
       message: 'Введите url',
@@ -37,7 +41,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        const urlRegexp = /^(http|https)\:\/\/(www.)?[a-zA-Z0-9\-\.\/\?\=\&]+/;
+        const urlRegexp = /^(http|https):\/\/(www.)?[a-zA-Z0-9-./?=&]+/;
         return urlRegexp.test(v);
       },
       message: 'Введите url',
@@ -48,7 +52,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        const urlRegexp = /^(http|https)\:\/\/(www.)?[a-zA-Z0-9\-\.\/\?\=\&]+/;
+        const urlRegexp = /^(http|https):\/\/(www.)?[a-zA-Z0-9-./?=&]+/;
         return urlRegexp.test(v);
       },
       message: 'Введите url',

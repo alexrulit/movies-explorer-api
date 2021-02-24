@@ -65,7 +65,7 @@ const updateUser = (req, res, next) => {
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
-  const { JWT_SECRET } = process.env;
+  const { JWT_SECRET = 'develsecret' } = process.env;
 
   return User.findUserByCredentials(email, password)
     .then((user) => {

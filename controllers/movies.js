@@ -5,6 +5,7 @@ const InternalServerError = require('../errors/internal-srv-err');
 
 const createMovie = (req, res, next) => {
   const {
+    movieId,
     country,
     director,
     duration,
@@ -19,6 +20,7 @@ const createMovie = (req, res, next) => {
   const owner = req.user._id;
 
   Movie.create({
+    movieId,
     country,
     director,
     duration,

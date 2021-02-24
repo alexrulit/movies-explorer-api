@@ -25,8 +25,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-/* eslint func-names: "off" */
-userSchema.statics.findUserByCredentials = function (email, password) {
+userSchema.statics.findUserByCredentials = function func(email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
