@@ -11,14 +11,17 @@ const { createUser, login } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
-const { DB_URI = 'mongodb://localhost:27017/moviesdb' } = process.env;
+if (process.env.NODE_ENV !== 'production') {
+  process.env.JWT_TOKEN = 'developmenttokensecret';
+  process.env.DB_URI = 'mongodb://localhost:27017/moviesdb';
+  process.env.PORT = 3000;
+}
 
 const app = express();
 
 app.use(cors());
 
-mongoose.connect(DB_URI, {
+mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
@@ -62,4 +65,4 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.listen(PORT, () => {});
+app.listen(process.env.PORT, () => {});
