@@ -12,7 +12,7 @@ const { auth } = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 if (process.env.NODE_ENV !== 'production') {
-  process.env.JWT_TOKEN = 'developmenttokensecret';
+  process.env.JWT_SECRET = 'developmenttokensecret';
   process.env.DB_URI = 'mongodb://localhost:27017/moviesdb';
   process.env.PORT = 3000;
 }
